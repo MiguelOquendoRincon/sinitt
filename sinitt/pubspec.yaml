@@ -27,9 +27,9 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  flutter_localizations:
-    sdk: flutter
   flutter:
+    sdk: flutter
+  flutter_localizations:
     sdk: flutter
 
 
@@ -45,6 +45,16 @@ dependencies:
   #Provides internationalization and localization facilities, including message 
   #translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
   intl: ^0.17.0
+  #A flutter package to easily added dotted borders around widgets.
+  dotted_border: ^2.0.0+1
+  #This plugin provides a cross-platform (iOS, Android) API to request permissions and check their status.
+  permission_handler: ^8.3.0
+  #Highly customizable, feature-packed calendar widget for Flutter.
+  table_calendar: ^3.0.3
+  #This package contains a set of high-level functions and classes that make it easy to consume HTTP resources. It's multi-platform, and supports mobile, desktop, and the browser.
+  http: ^0.13.4
+  #Wraps platform-specific persistent storage for simple data
+  shared_preferences: ^2.0.9
 
 dev_dependencies:
   flutter_test:
@@ -69,9 +79,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/FondoCarga.JPG
+    - assets/images/
+    - assets/geojson/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -84,10 +95,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: SinittIcons
+      fonts:
+        - asset: assets/icons/SinittIcons.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

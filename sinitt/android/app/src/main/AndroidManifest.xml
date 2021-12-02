@@ -1,11 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sinitt">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
    <application
         android:label="sinitt"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.mapbox.token" android:value="sk.eyJ1IjoibWlndWVsb3F1ZW5kbzk5IiwiYSI6ImNrdzlubWMybjF1aHcydW8wYmQyaWJraGsifQ.rX5AW7lNpS00JsMmN2lTIQ" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

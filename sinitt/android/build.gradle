@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.android.tools.build:gradle:3.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -23,7 +23,9 @@ allprojects {
                 // This should always be `mapbox` (not your username). 
                 username = 'mapbox'
                 // Use the secret token you stored in gradle.properties as the password
-                password = project.properties['MAPBOX_DOWNLOADS_TOKEN'] ?: 'sk.eyJ1IjoibWlndWVsb3F1ZW5kbzk5IiwiYSI6ImNrdzEwdjNpaTU1Z2Uyb28wMWlqdHo4ZDcifQ.YbaVgWYaQ2U3Z5kAU0b_rQ'
+                // password = 'sk.eyJ1IjoibWlndWVsb3F1ZW5kbzk5IiwiYSI6ImNrdzEwdjNpaTU1Z2Uyb28wMWlqdHo4ZDcifQ.YbaVgWYaQ2U3Z5kAU0b_rQ'
+                password = project.properties['MAPBOX_DOWNLOADS_TOKEN'] ?: ""
+                
             }
         }
         google()

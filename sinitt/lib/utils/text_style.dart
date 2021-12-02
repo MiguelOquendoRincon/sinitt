@@ -6,36 +6,40 @@ class TextStyles {
   TextStyle whiteText({
     Color color = Colors.white, 
     BuildContext? context,
-    double? fontSize = 16.0
+    double? fontSize = 16.0,
+    FontWeight fontWeight = FontWeight.normal
   }) {
     if (context != null) {
       return TextStyle(
         color: color,
-        fontSize: fontSize
+        fontSize: fontSize,
+        fontWeight: fontWeight
       );
     }
-    return TextStyle(color: color, fontSize: fontSize);
+    return TextStyle(color: color, fontSize: fontSize, fontWeight: fontWeight);
   }
 
   TextStyle blueText({
     Color color = Colors.blue, 
     BuildContext? context,
-    double? fontSize = 16.0
+    double? fontSize = 15.0,
+    FontWeight fontWeight = FontWeight.normal
   }) {
     if (context != null) {
       color = Theme.of(context).primaryColor;
       return TextStyle(
         color: color,
-        fontSize: fontSize
+        fontSize: fontSize,
+        fontWeight: fontWeight
       );
     }
-    return TextStyle(color: color, fontSize: fontSize);
+    return TextStyle(color: color, fontSize: fontSize, fontWeight: fontWeight);
   }
 
   TextStyle blackText({
     Color color = Colors.black, 
     BuildContext? context,
-    double? fontSize = 16.0,
+    double? fontSize = 15.0,
     FontWeight fontWeight = FontWeight.normal
   }) {
     if (context != null) {
@@ -51,15 +55,25 @@ class TextStyles {
   TextStyle greyText({
     Color color = Colors.grey, 
     BuildContext? context,
-    double? fontSize = 16.0,
-    FontWeight fontWeight = FontWeight.normal
+    double? fontSize = 14.0,
+    FontWeight fontWeight = FontWeight.normal,
+    bool lightGrey = false
   }) {
     if (context != null) {
-      return TextStyle(
-        color: HexColor('#BABABA'),
-        fontSize: fontSize,
-        fontWeight: fontWeight
-      );
+      if(lightGrey){
+        return TextStyle(
+          color: HexColor('#BABABA'),
+          fontSize: fontSize,
+          fontWeight: fontWeight
+        );
+      } else{
+        return TextStyle(
+          color: HexColor('#4C4B4B'),
+          fontSize: fontSize,
+          fontWeight: fontWeight
+        );
+      }
+      
     }
     return TextStyle(color: color, fontSize: fontSize, fontWeight: fontWeight);
   }

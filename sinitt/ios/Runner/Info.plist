@@ -7,7 +7,7 @@
 	<key>MGLMapboxAccessToken</key>
 	<string>sk.eyJ1IjoibWlndWVsb3F1ZW5kbzk5IiwiYSI6ImNrdzEwdjNpaTU1Z2Uyb28wMWlqdHo4ZDcifQ.YbaVgWYaQ2U3Z5kAU0b_rQ</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"Muestra su ubicación en el mapa y ayuda a mejorar el mapa"</string>
+	<string>"Muestra su ubicación en el mapa y permite acceder a los eventos víales cercanos"</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

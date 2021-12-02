@@ -1,12 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:sinitt/api/api_default_token.dart';
+
 import 'package:sinitt/routes/routes.dart';
 import 'package:sinitt/utils/hexcolor.dart';
 import 'package:sinitt/utils/screen_size.dart';
+import 'package:sinitt/user_preferences/user_preferences.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = UserPreferences();
+  await prefs.initPrefs();
+  await singletonDefaultToken.getDefaulToken().then((value) => {
+    prefs.defaultToken = value.token,
+    prefs.defaultTokenType = value.tokenType,
+  });
   runApp(const MyApp());
 }
 
@@ -32,6 +43,7 @@ class MyApp extends StatelessWidget {
       )
     );
 
+
     // !ICONO PARA MOSTRAR LA UBICACION ACTUAL
     // person_pin_circle
     return LayoutBuilder(
@@ -40,9 +52,10 @@ class MyApp extends StatelessWidget {
           builder: (context, orientation) {
             ScreenSize().init(constraints, orientation);
             return MaterialApp(
-
               localizationsDelegates: const[
-                GlobalMaterialLocalizations.delegate
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: const [
                 Locale('es'),
@@ -58,6 +71,8 @@ class MyApp extends StatelessWidget {
                 ),
       //   backgroundColor: HexColor('#00FFFFFF'),
                 canvasColor: HexColor('#00FFFFFF'),
+                splashColor: HexColor('#E6EFFD'),
+                hoverColor: HexColor('#E6EFFD'),
                 /*FALTA AGREGAR #069169, #FFAB00, #4B4B4B, #F2F2F2*/
                 primaryColor: HexColor('#004884'),
                 shadowColor: HexColor('#BABABA'),
@@ -84,9 +99,8 @@ class MyApp extends StatelessWidget {
                 // or simply save your changes to "hot reload" in a Flutter IDE).
                 // Notice that the counter didn't reset back to zero; the application
                 // is not restarted.
-                primarySwatch: Colors.blue,
               ),
-              initialRoute: '/',
+              initialRoute: '/splash',
               routes: appRoutes,
             );
           }
@@ -94,6 +108,10 @@ class MyApp extends StatelessWidget {
       }
     );
   }
+
+  
 }
+
+
 
 
