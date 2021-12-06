@@ -101,9 +101,8 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                   children: [
                     Container(
                       margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        
                       ),
                       child: Icon(
                         SinittIcons.icono_user,
@@ -114,6 +113,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                     Text(
                       'Usuario General',
                       style: textStyles.whiteText(
+                        context: context,
                         fontSize: ScreenSize.screenWidth * 0.055
                       ),
                     )
@@ -237,7 +237,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                           departamentoValue = newValue!;
                         });
                       },
-                      items: <String>['Departamento', 'Antioquia', 'Bogotá D.C', 'Santander']
+                      items: <String>['Departamento', 'Antioquia', 'Bogotá D.C', 'Santander', 'Boyacá', 'Amazonas', 'Huila', 'Tolima', 'Atlantico', 'Magdalena', 'Cundinamarca']
                           .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           onTap: (){
@@ -468,10 +468,11 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                   ),
                   Container(
                     width: ScreenSize.screenWidth,
-                    alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.only(top: 15.0),
-                    child: TextButton(
-                      child: Text('Seleccionar'),
+                    alignment: Alignment.centerRight,
+                    margin: const EdgeInsets.only(top: 50.0, right: 25.0),
+                    child: MaterialButton(
+                      color: Theme.of(context).primaryColor,
+                      child: Text('Seleccionar', style: textStyles.whiteText(),),
                       onPressed: () => Navigator.of(context).pop(_selectedDay)
                     ),
                   )
@@ -593,7 +594,12 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                           child: DropdownButton<String>(
                             isDense: true,
                             isExpanded: true,
-                            value: claseIncidente,
+                            // value: claseIncidente,
+                            hint: Text(
+                              '$claseIncidente', 
+                              overflow: TextOverflow.ellipsis,
+                              style: claseIncidente == 'Escoger' ? textStyles.greyText(context: context, lightGrey: true) :textStyles.blackText(),
+                            ),
                             dropdownColor: Colors.white,
                             icon: RotatedBox(
                               quarterTurns: 1,
@@ -604,18 +610,24 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                             ),
                             iconSize: ScreenSize.screenWidth * 0.0500,
                             elevation: 16,
-                            style: claseIncidente == 'Escoger' ? textStyles.greyText(context: context, lightGrey: true) :textStyles.blackText(),
                             underline: Container(),
                             onChanged: (String? newValue) {
                               setState(() {
                                 claseIncidente = newValue!;
                               });
                             },
-                            items: <String>['Escoger', 'Accidente', 'Condiciones de la superficie de la carreter', 'Malas condiciones ambientales', 'Obstrucción', 'Infraestructura dañada']
+                            items: <String>['Escoger', 'Accidente', 'Condiciones de la superficie de la carretera', 'Malas condiciones ambientales', 'Obstrucción', 'Infraestructura dañada']
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
-                                child: Text(value),
+                                child: SizedBox(
+                                  width: ScreenSize.screenWidth * 0.72,
+                                  child: Text(
+                                    value, 
+                                    maxLines: 3, 
+                                    overflow: TextOverflow.ellipsis,
+                                  )
+                                ),
                               );
                             }).toList(),
                           ),
@@ -644,7 +656,11 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                           child: DropdownButton<String>(
                             isDense: true,
                             isExpanded: true,
-                            value: tipoIncidente,
+                            hint: Text(
+                              '$tipoIncidente', 
+                              overflow: TextOverflow.ellipsis,
+                              style: claseIncidente == 'Escoger' ? textStyles.greyText(context: context, lightGrey: true) :textStyles.blackText(),
+                            ),
                             dropdownColor: Colors.white,
                             icon: RotatedBox(
                               quarterTurns: 1,
@@ -655,7 +671,6 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                             ),
                             iconSize: ScreenSize.screenWidth * 0.0500,
                             elevation: 16,
-                            style: tipoIncidente == 'Escoger' ? textStyles.greyText(context: context, lightGrey: true) :textStyles.blackText(),
                             underline: Container(),
                             onChanged: (String? newValue) {
                               setState(() {
@@ -666,7 +681,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
-                                child: Text(value),
+                                child: SizedBox(width: ScreenSize.screenWidth * 0.72 ,child: Text(value, maxLines: 3, overflow: TextOverflow.ellipsis,))
                               );
                             }).toList(),
                           ),

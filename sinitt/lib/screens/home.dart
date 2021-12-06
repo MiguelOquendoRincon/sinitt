@@ -401,10 +401,13 @@ class _HomePageState extends State<HomePage> {
         } else if(eventType == 'peaje'){
           peaje.Feature eventData = peaje.Feature.fromJson(symbolData);
           return _peajeAlert(eventData);
-        } else { //if(eventType == 'fotoDeteccion')
+        } else if(eventType == 'fotoDeteccion'){ //if(eventType == 'fotoDeteccion')
           fotoDeteccion.Feature eventData = fotoDeteccion.Feature.fromJson(symbolData);
           return _camaraDetectionAlert(eventData);
-        }
+        } else {
+          signals.Feature eventData = signals.Feature.fromJson(symbolData);
+          return _signalAlert(eventData);
+        } 
       }
     );
   }
@@ -913,5 +916,92 @@ galley of type and scrambled it to make a type specimen book.''',
     );
   }
 
+  Widget _signalAlert(signals.Feature eventData){
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                width: ScreenSize.screenWidth * 0.75,
+                padding: const EdgeInsets.symmetric(vertical: 35.0, horizontal: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 10.0, bottom: 20.0),
+                      child: Text(
+                        'Señal N° ${eventData.properties!.id}',
+                        style: textStyles.whiteText(
+                          context: context,
+                          fontSize: ScreenSize.screenWidth * 0.065,
+                          fontWeight: FontWeight.bold
+                        )
+                      ),
+                    ),
 
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 20.0),
+                      child: Text(
+                        'Código Camara: ${eventData.properties!.codCamara}',
+                        style: textStyles.whiteText(
+                          context: context,
+                          fontSize: ScreenSize.screenWidth * 0.045,
+                          fontWeight: FontWeight.bold
+                        )
+                      ),
+                    ),
+
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 20.0),
+                      child: Text(
+                        "Entidad: ${eventData.properties!.entidad}",
+                        style: textStyles.whiteText(
+                          context: context,
+                          fontSize: ScreenSize.screenWidth * 0.038
+                        )
+                      ),
+                    ),
+
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 20.0),
+                      child: Text(
+                        "Código Municipio: ${eventData.properties!.codigoMunicipioDivipola}",
+                        style: textStyles.whiteText(
+                          context: context,
+                          fontSize: ScreenSize.screenWidth * 0.038
+                        )
+                      ),
+                    ),
+
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 20.0),
+                      child: Text(
+                        "Código Departamento: ${eventData.properties!.codigoDeptoDivipola}",
+                        style: textStyles.whiteText(
+                          context: context,
+                          fontSize: ScreenSize.screenWidth * 0.038
+                        )
+                      ),
+                    )
+
+                    
+                  ],
+                ),
+              ),
+
+              Container(
+                alignment: Alignment.center,
+                child: Icon(
+                  SinittIcons.icono_capa_fotodeteccion,
+                  color: Colors.white,
+                  size: ScreenSize.screenWidth * 0.15,
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
 }
