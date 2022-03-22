@@ -48,7 +48,7 @@ android {
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        // manifestPlaceholders = [ 'appAuthRedirectScheme': 'com.imaginecup.prodplatform' ]
+        manifestPlaceholders = [ 'appAuthRedirectScheme': 'com.example.sinitt' ]
     }
 
     buildTypes {

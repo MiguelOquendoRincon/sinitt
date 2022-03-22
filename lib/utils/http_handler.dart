@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:sinitt/user_preferences/user_preferences.dart';
 
@@ -32,7 +33,7 @@ class HttpHandler {
       if (statusCode < 200 || statusCode > 399) {
         throw Exception(statusCode);
       }
-      print(response);
+      debugPrint(response.toString());
       return utf8.decode(response.bodyBytes);
       // return json.decode(response.body);
     });
@@ -97,7 +98,7 @@ class HttpHandler {
       },
     ).then((http.Response response) {
       final int statusCode = response.statusCode;
-      print("STAUS CODE: $statusCode");
+      debugPrint("STAUS CODE: $statusCode");
       if (statusCode < 200 || statusCode > 399) {
         throw Exception(statusCode);
       }

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xlarge-v4\\values-xlarge-v4.xml",
+            "outputFile": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xlarge-v4\\values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\e03c259fc754ee5c16749444b36398fe\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2c15cf5dd2a163132d3ac6c8db0749d\\appcompat-1.1.0\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\values-xlarge-v4\\values-xlarge-v4.xml",
+            "outputFile": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\values-xlarge-v4\\values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\e03c259fc754ee5c16749444b36398fe\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2c15cf5dd2a163132d3ac6c8db0749d\\appcompat-1.1.0\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

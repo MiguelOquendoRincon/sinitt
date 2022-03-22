@@ -1,26 +1,26 @@
 [
     {
-        "merged": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_list_divider_material.xml",
-        "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\e03c259fc754ee5c16749444b36398fe\\res\\drawable-v21\\abc_list_divider_material.xml"
+        "merged": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2c15cf5dd2a163132d3ac6c8db0749d\\appcompat-1.1.0\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
     },
     {
-        "merged": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
-        "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\e03c259fc754ee5c16749444b36398fe\\res\\drawable-v21\\abc_btn_colored_material.xml"
+        "merged": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2c15cf5dd2a163132d3ac6c8db0749d\\appcompat-1.1.0\\res\\drawable-v21\\abc_edit_text_material.xml"
     },
     {
-        "merged": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
-        "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\e03c259fc754ee5c16749444b36398fe\\res\\drawable-v21\\abc_edit_text_material.xml"
+        "merged": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2be6c9aacf58f42fe6cce94ee0d6788\\core-1.6.0\\res\\drawable-v21\\notification_action_background.xml"
     },
     {
-        "merged": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_dialog_material_background.xml",
-        "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\e03c259fc754ee5c16749444b36398fe\\res\\drawable-v21\\abc_dialog_material_background.xml"
+        "merged": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_dialog_material_background.xml",
+        "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2c15cf5dd2a163132d3ac6c8db0749d\\appcompat-1.1.0\\res\\drawable-v21\\abc_dialog_material_background.xml"
     },
     {
-        "merged": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
-        "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\0118be6d9bc83d77111e1cb873c25504\\res\\drawable-v21\\notification_action_background.xml"
+        "merged": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2c15cf5dd2a163132d3ac6c8db0749d\\appcompat-1.1.0\\res\\drawable-v21\\abc_btn_colored_material.xml"
     },
     {
-        "merged": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
-        "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\e03c259fc754ee5c16749444b36398fe\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+        "merged": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_list_divider_material.xml",
+        "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2c15cf5dd2a163132d3ac6c8db0749d\\appcompat-1.1.0\\res\\drawable-v21\\abc_list_divider_material.xml"
     }
 ]

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\path_provider_android\\intermediates\\res\\merged\\debug\\values-fr\\values-fr.xml",
+            "outputFile": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\path_provider_android\\intermediates\\res\\merged\\debug\\values-fr\\values-fr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\0118be6d9bc83d77111e1cb873c25504\\res\\values-fr\\values-fr.xml",
+                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2be6c9aacf58f42fe6cce94ee0d6788\\core-1.6.0\\res\\values-fr\\values-fr.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\path_provider_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr\\values-fr.xml",
+            "outputFile": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\path_provider_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr\\values-fr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\0118be6d9bc83d77111e1cb873c25504\\res\\values-fr\\values-fr.xml",
+                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2be6c9aacf58f42fe6cce94ee0d6788\\core-1.6.0\\res\\values-fr\\values-fr.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

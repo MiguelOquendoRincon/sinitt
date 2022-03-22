@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\values-v17\\values-v17.xml",
+            "outputFile": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\e03c259fc754ee5c16749444b36398fe\\res\\values-v17\\values-v17.xml",
+                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2c15cf5dd2a163132d3ac6c8db0749d\\appcompat-1.1.0\\res\\values-v17\\values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,25,29,33,37,40,43,46,50,53,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -17,10 +17,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
+            "outputFile": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\values-v17\\values-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\e03c259fc754ee5c16749444b36398fe\\res\\values-v17\\values-v17.xml",
+                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2c15cf5dd2a163132d3ac6c8db0749d\\appcompat-1.1.0\\res\\values-v17\\values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,25,29,33,37,40,43,46,50,53,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

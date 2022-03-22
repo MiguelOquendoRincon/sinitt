@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,7 +12,7 @@ import 'package:sinitt/api/api_foto_deteccion.dart';
 import 'package:sinitt/api/api_peajes.dart';
 import 'package:sinitt/api/api_signals.dart';
 import 'package:sinitt/api/api_situtations.dart';
-import 'package:sinitt/models/foto_deteccion_model.dart' as fotoDeteccion;
+import 'package:sinitt/models/foto_deteccion_model.dart' as foto_deteccion;
 import 'package:sinitt/models/peaje_model.dart' as peaje;
 import 'package:sinitt/models/signals_model.dart' as signals;
 import 'package:sinitt/models/situation_model.dart' as situation;
@@ -101,7 +100,7 @@ class _HomePageState extends State<HomePage> {
         muniCode: userPrefs.muniID != "" ? "&municipalityCode=" + userPrefs.muniID : "", 
         viaCode: userPrefs.viaID != "" ? "&roadCode=" + userPrefs.viaID : "",
       ).then((value) {
-        var data = fotoDeteccion.fotoDeteccionFromJson(value);
+        var data = foto_deteccion.fotoDeteccionFromJson(value);
         var jsonData = data.toJson();
         setState(() => fotoDeteccionJson = jsonData);
         // userPrefs.userCapFilter = "";
@@ -166,7 +165,6 @@ class _HomePageState extends State<HomePage> {
       mapController!.onSymbolTapped.add((argument) => _onSymbolTapped(argument));
       setState(() => isLoading = false);
     } catch(e){
-      print(e);
       setState(() => isLoading = false);
       _showFailedLoad('Tuvimos problemas al cargar la información. Verifica tu conexión a internet o intentalo más tarde');
     }
@@ -191,7 +189,6 @@ class _HomePageState extends State<HomePage> {
       }
       mapController!.addSymbols(symbols, symbolsData);
     } catch(e){
-      print(e);
       _showFailedLoad('Tuvimos problemas al cargar la situación.');
       _loadPeajes();
       _loadFotoDetections();
@@ -232,7 +229,7 @@ class _HomePageState extends State<HomePage> {
         Importante recordar que para agregar el simbolo correcto se debe validar con texto al momento de ir agregando*/
       List<SymbolOptions> fotoDeteccionSymbols = [];
       List<Map<dynamic, dynamic>> fotoDetectionSymbolsData = [];
-      var datosFotoDetectionTratados = fotoDeteccion.FotoDeteccion.fromJson(fotoDeteccionJson);
+      var datosFotoDetectionTratados = foto_deteccion.FotoDeteccion.fromJson(fotoDeteccionJson);
       for (var element in datosFotoDetectionTratados.features!) {
         fotoDeteccionSymbols.add(SymbolOptions(
           geometry: LatLng(element.geometry!.coordinates![1], element.geometry!.coordinates![0]),
@@ -459,7 +456,7 @@ class _HomePageState extends State<HomePage> {
           peaje.Feature eventData = peaje.Feature.fromJson(symbolData);
           return _peajeAlert(eventData);
         } else if(eventType == 'fotoDeteccion'){ //if(eventType == 'fotoDeteccion')
-          fotoDeteccion.Feature eventData = fotoDeteccion.Feature.fromJson(symbolData);
+          foto_deteccion.Feature eventData = foto_deteccion.Feature.fromJson(symbolData);
           return _camaraDetectionAlert(eventData);
         } else {
           signals.Feature eventData = signals.Feature.fromJson(symbolData);
@@ -906,7 +903,7 @@ class _HomePageState extends State<HomePage> {
 
   //*Widget que retorna la alerta de una camara de detección informando sus datos en particular.
   // *@params eventData: Recibe todo el objeto de propiedades particular.
-  Widget _camaraDetectionAlert(fotoDeteccion.Feature eventData){
+  Widget _camaraDetectionAlert(foto_deteccion.Feature eventData){
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -1137,7 +1134,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 alignment: Alignment.center,
                 child: Icon(
-                  SinittIcons.icono_capa_fotodeteccion,
+                  SinittIcons.iconoCapaFotodeteccion,
                   color: Colors.white,
                   size: ScreenSize.screenWidth * 0.15,
                 ),

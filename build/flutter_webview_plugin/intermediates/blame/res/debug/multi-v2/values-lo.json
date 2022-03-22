@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\values-lo\\values-lo.xml",
+            "outputFile": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\values-lo\\values-lo.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\e03c259fc754ee5c16749444b36398fe\\res\\values-lo\\values-lo.xml",
+                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2c15cf5dd2a163132d3ac6c8db0749d\\appcompat-1.1.0\\res\\values-lo\\values-lo.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\0118be6d9bc83d77111e1cb873c25504\\res\\values-lo\\values-lo.xml",
+                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2be6c9aacf58f42fe6cce94ee0d6788\\core-1.6.0\\res\\values-lo\\values-lo.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -33,10 +33,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\migue\\Desktop\\sinitt-sipi-app-movil\\sinitt\\build\\flutter_webview_plugin\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lo\\values-lo.xml",
+            "outputFile": "C:\\Users\\Usuario\\Desktop\\sinitt\\sinitt\\build\\flutter_webview_plugin\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lo\\values-lo.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\e03c259fc754ee5c16749444b36398fe\\res\\values-lo\\values-lo.xml",
+                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2c15cf5dd2a163132d3ac6c8db0749d\\appcompat-1.1.0\\res\\values-lo\\values-lo.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -46,7 +46,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\migue\\.gradle\\caches\\transforms-2\\files-2.1\\0118be6d9bc83d77111e1cb873c25504\\res\\values-lo\\values-lo.xml",
+                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-2\\files-2.1\\c2be6c9aacf58f42fe6cce94ee0d6788\\core-1.6.0\\res\\values-lo\\values-lo.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

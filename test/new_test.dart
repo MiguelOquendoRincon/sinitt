@@ -3,13 +3,12 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:test/test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
-import 'package:mockito/mockito.dart';
 
 void main() async {
   Dio dio = Dio();
-  Response<dynamic> response;
+  // Response<dynamic> response;
   DioAdapter dioAdapterMockito = DioAdapter(dio: Dio());
-  String url = 'https://common-service-dot-smart-helios-sinitt.uc.r.appspot.com/departments/';
+  // String url = 'https://common-service-dot-smart-helios-sinitt.uc.r.appspot.com/departments/';
 
   group('DioAdapterMockito', () {
 

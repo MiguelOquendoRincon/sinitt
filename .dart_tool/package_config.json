@@ -194,6 +194,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_appauth",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_appauth-2.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_appauth_platform_interface",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_appauth_platform_interface-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4",
       "packageUri": "lib/",
@@ -806,7 +818,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-03-04T19:41:18.255401Z",
+  "generated": "2022-03-21T16:25:14.592042Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }

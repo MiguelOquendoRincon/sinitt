@@ -1,10 +1,8 @@
 
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sinitt/controller/request_permission_controller.dart';
-import 'package:sinitt/utils/screen_size.dart';
 import 'package:sinitt/utils/text_style.dart';
 
 class RequestPermissionPage extends StatefulWidget {

@@ -35,6 +35,16 @@
         android:name="android.permission.GET_TASKS"
         android:maxSdkVersion="20" />
 
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
     <application
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
@@ -101,13 +111,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/flutter_image_picker_file_paths" />
         </provider>
-
-        <service
-            android:name="com.lyokone.location.FlutterLocationService"
-            android:enabled="true"
-            android:exported="false"
-            android:foregroundServiceType="location" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.sinitt.fileprovider"
@@ -117,6 +120,13 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
         </provider>
+
+        <service
+            android:name="com.lyokone.location.FlutterLocationService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.example.sinitt.androidx-startup"
@@ -163,6 +173,24 @@
         <service
             android:name="com.mapbox.android.telemetry.MapboxTelemetryService"
             android:exported="false" />
+
+        <activity
+            android:name="net.openid.appauth.AuthorizationManagementActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Translucent.NoTitleBar" />
+        <activity
+            android:name="net.openid.appauth.RedirectUriReceiverActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="com.example.sinitt" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

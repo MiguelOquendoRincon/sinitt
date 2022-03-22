@@ -1,13 +1,9 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-// import 'package:flutter_azure_b2c/B2CConfiguration.dart';
-// import 'package:flutter_azure_b2c/B2COperationResult.dart';
+import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:location/location.dart';
@@ -17,22 +13,12 @@ import 'package:sinitt/user_preferences/user_preferences.dart';
 import 'package:sinitt/utils/hexcolor.dart';
 import 'package:sinitt/utils/screen_size.dart';
 import 'package:sinitt/utils/text_style.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'package:image_picker/image_picker.dart';
 
-
-// import 'package:aad_oauth/aad_oauth.dart';
-// import 'package:aad_oauth/model/config.dart';
-
-import 'package:http/http.dart' as http;
-
 import '../api/api_situation_list.dart';
 import '../models/situation_list.dart';
-import '../models/subsitutation_list.dart';
-
-// import 'package:flutter_azure_b2c/flutter_azure_b2c.dart';
 
 
 class AppDrawer extends StatefulWidget {
@@ -43,9 +29,7 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
-  // final formatter = DateFormat('yyyy-MM-dd hh:mm');hh:mm a
-  var imageFile;
-
+  XFile? imageFile;
   final hourFormatter = DateFormat('hh:mm a');
   final formatter = DateFormat('dd-MM-yyyy');
   DateTime date = DateTime.now();
@@ -75,11 +59,11 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
   UserPreferences prefs = UserPreferences();
   // ================================================
   String? claseIncidente = 'Escoger';
+  String? idClaseIncidente = "";
+  String? prevIdClaseIncidente = "";
   String? tipoIncidente = 'Escoger';
   DateTime currentDate = DateTime.now();
   AnimationController? _animationController;
-  DateTime _selectedDay = DateTime.now();
-  DateTime _focusedDay = DateTime.now();
   // ================================================
 
 
@@ -129,7 +113,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
   
   @override
   Widget build(BuildContext context) {
-    // print(oauth);
+    // debugPrint(oauth);
     return SizedBox(
       // elevation: 0.0,
       width: ScreenSize.screenWidth * 0.8,
@@ -303,65 +287,94 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
     // AuthorizationTokenResponse? result;
     try{
       // FlutterAppAuth appAuth = FlutterAppAuth();
-      var queryParameters = {
-        // "p": "B2C_1_signupandsign",
-        "cliend_id": "fe032013-e8df-4fc7-a5fe-c40555cd8663",
-        "nonce": "defaultNonce",
-        "redirect_uri": "Navigator.pop()",
-        "scope": "openid, offline_access",
-        "response_type": "code",
-        "prompt": "login"
-      };
-      print("holita");
-      // var hola = await _login();
-      // var data = await AzureB2C.policyTriggerInteractive(
-      //     "B2C_1_signupandsign",
-      //     ["user.read", "openid", "offline_access"],
-      //     null);
-      // print(data);
+      // var queryParameters = {
+      //   // "p": "B2C_1_signupandsign",
+      //   "cliend_id": "fe032013-e8df-4fc7-a5fe-c40555cd8663",
+      //   "nonce": "defaultNonce",
+      //   "redirect_uri": "Navigator.pop()",
+      //   "scope": "openid, offline_access",
+      //   "response_type": "code",
+      //   "prompt": "login"
+      // };
+
+      FlutterAppAuth _appauth = FlutterAppAuth();
+      // result = (await _appauth.authorizeAndExchangeCode(
+      //   AuthorizationTokenRequest(
+      //     "fe032013-e8df-4fc7-a5fe-c40555cd8663", 
+      //     "com.example.sinitt://oauthredirect",
+      //     // discoveryUrl: "https://mintransporteb2c.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=B2C_1_signupandsign",
+      //     discoveryUrl: "https://mintransporteb2c.b2clogin.com/mintransporteb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupandsign",
+      //     scopes: ['fe032013-e8df-4fc7-a5fe-c40555cd8663','openid','profile', 'email', 'offline_access', 'api'],
+      //     allowInsecureConnections: true,
+      //     preferEphemeralSession: true
+      //   ),
+      // ))!;
+
+      // final TokenResponse? result = await _appauth.token(
+      //   TokenRequest(
+      //     'fe032013-e8df-4fc7-a5fe-c40555cd8663', 
+      //     'com.example.sinitt://oauthredirect',
+      //     discoveryUrl: 'https://mintransporteb2c.b2clogin.com/mintransporteb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupandsign',
+      //     scopes: ['fe032013-e8df-4fc7-a5fe-c40555cd8663','profile', 'email', 'offline_access', 'api']
+      //   )
+      // );
+
+      final AuthorizationTokenResponse? result = await _appauth.authorizeAndExchangeCode(
+        AuthorizationTokenRequest(
+          'fe032013-e8df-4fc7-a5fe-c40555cd8663', 
+          'com.example.sinitt://oauthredirect',
+          discoveryUrl: 'https://mintransporteb2c.b2clogin.com/mintransporteb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupandsign',
+          scopes: ['fe032013-e8df-4fc7-a5fe-c40555cd8663','profile', 'email', 'offline_access', 'api']
+        ),
+      );
+
+
+      // var queryParameters = {
+      //   'p': "B2C_1_signupandsign",
+      //   'client_id': "fe032013-e8df-4fc7-a5fe-c40555cd8663",
+      //   'nonce': 'defaultNonce',
+      //   'redirect_uri': 'urn:ietf:wg:oauth:2.0:oob',
+      //   'scope': "offline_access openid",
+      //   'response_type': "code",
+      //   'prompt': "login",
+      // };
       // var uri = Uri.https(
-      //   "mintransporteb2c.b2clogin.com",
-      //   "/mintransporteb2c.onmicrosoft.com/B2C_1_signupandsign", queryParameters
-      // );
-
+      //     'mintransporteb2c.b2clogin.com',
+      //     '/mintransporteb2c.onmicrosoft.com/oauth2/v2.0/authorize', queryParameters);
       // var response = await http.get(uri);
-      // var holita = response.body;
-      // print("hola");
-      // print(response);
-      print("holita");
-      // final resulta = await appAuth.token(TokenRequest(
-      //   "fe032013-e8df-4fc7-a5fe-c40555cd8663",
-      //   "com.imaginecup.prodplatform://oauthredirect",
-      //   scopes: ['openid','profile', 'email', 'offline_access', 'api'],
-      //   grantType: "mintransporteb2c",
-      //   discoveryUrl: "https://mintransporteb2c.b2clogin.com/mintransporteb2c/v2.0/.well-known/openid-configuration?p=B2C_1_signupandsign/"
-      // )); 
-      // final AuthorizationTokenResponse? result = await appAuth.authorizeAndExchangeCode(
-      //   AuthorizationTokenRequest(
-      //     'fe032013-e8df-4fc7-a5fe-c40555cd8663',
-      //     'com.imaginecup.prodplatform://oauthredirect', 
-      //     discoveryUrl: 'https://mintransporteb2c.b2clogin.com/mintransporteb2c/v2.0/.well-known/openid-configuration?p=B2C_1_signupandsign/',
-      //     scopes: ['openid','profile', 'email', 'offline_access', 'api'],
-      //   ),
-      // );
-
-      // final AuthorizationTokenResponse? result = await appAuth.authorizeAndExchangeCode(
-      //   AuthorizationTokenRequest(
-      //     '<client_id>',
-      //     '<redirect_url>',
-      //     serviceConfiguration: AuthorizationServiceConfiguration(
-      //       authorizationEndpoint: 'https://mintransporteb2c.b2clogin.com/',  
-      //       tokenEndpoint: 'https://mintransporteb2c.b2clogin.com/mintransporteb2c.onmicrosoft.com/B2C_1_signupandsign',
-      //     ),
-      //     scopes: ['openid','profile', 'email', 'offline_access', 'api']
-      //   ),
-      // );
-      print("hola");
-      // print(resulta);
+      debugPrint(result.toString());
     }catch(e){
-      print(e.toString());
-
+      debugPrint(e.toString());
+      _showB2CAlert();
     }
+  }
+
+  _showB2CAlert(){
+    return showDialog(
+      context: context, 
+      builder: (_){
+        return AlertDialog(
+          title: const Text("Inicio de sesión invalido"),
+          content: const Text("No completaste el proceso de inicio de sesión. Si no lo haces no podrás registrar incidentes"),
+          actions: [
+            MaterialButton(
+              child: const Text("Cerrar", style: TextStyle(color: Colors.white),),
+              color: Theme.of(context).errorColor,
+              onPressed: () => Navigator.pop(context)
+            ),
+
+            MaterialButton(
+              child: const Text("Intentar de nuevo", style: TextStyle(color: Colors.white),),
+              color: Theme.of(context).primaryColor,
+              onPressed: () async {
+                Navigator.pop(context);
+                await _launchB2CAuth();
+              } 
+            )
+          ],
+        );
+      }
+    );
   }
 
   _showSearchFilter(){
@@ -458,7 +471,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 onTap: (){
-                                  print('HOLAAAA');
+                                  debugPrint('HOLAAAA');
                                 },
                                 value: value,
                                 child: Text(value),
@@ -769,82 +782,6 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
     );
   }
 
-  Future _calendarDemo(){
-    return showModalBottomSheet(
-      context: context, 
-      builder: (_){
-        return StatefulBuilder(
-          builder: (context, setState) {
-            return Container(
-              color: Colors.white,
-              child: Column(
-                children: [
-                  TableCalendar(
-                    currentDay: _selectedDay,
-                    locale: 'es',
-                    headerStyle: const HeaderStyle(
-                      formatButtonVisible: false,
-                      titleCentered: true
-                    ),
-                    calendarStyle: const CalendarStyle(
-                      canMarkersOverflow: true,
-                      selectedTextStyle: TextStyle(color: Colors.red)
-                    ),
-                    calendarBuilders: CalendarBuilders(
-                      selectedBuilder: (context, date, _){
-                        return FadeTransition(
-                          opacity: Tween(begin: 0.0, end: 1.0).animate(_animationController!),
-                          child: Container(
-                            alignment: Alignment.center,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.blue
-                            ),
-                            child: Text('${date.day}', style: const TextStyle(color: Colors.white),),
-                          ),
-                        );
-                      },
-
-                      todayBuilder: (context, date, _){
-                        return Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: HexColor('#3366CC')
-                          ),
-                          child: Text('${date.day}', style: TextStyle(color: Colors.white),),
-                        );
-                      }
-                    ),
-                    onDaySelected: (selectedDay, focusedDay) {
-                      _animationController!.forward(from: 0.0);
-                      setState(() =>_selectedDay = selectedDay);
-                    },
-                    onPageChanged: (focusedDay) => _focusedDay = focusedDay,
-                    firstDay: DateTime(1900), 
-                    lastDay: DateTime(2100),
-                    focusedDay: _focusedDay,
-                    calendarFormat: CalendarFormat.month,
-                  ),
-                  Container(
-                    width: ScreenSize.screenWidth,
-                    alignment: Alignment.centerRight,
-                    margin: const EdgeInsets.only(top: 50.0, right: 25.0),
-                    child: MaterialButton(
-                      color: Theme.of(context).primaryColor,
-                      child: Text('Seleccionar', style: textStyles.whiteText(),),
-                      onPressed: () => Navigator.of(context).pop(_selectedDay)
-                    ),
-                  )
-                ],
-              ),
-            );
-          }
-        );
-      }
-    );
-  }
-
   _newIncidente(){
     return showModalBottomSheet(
       backgroundColor: Colors.white,
@@ -920,7 +857,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
               if (imageFile != null) {
                 return Column(
                   children: [
-                    Image.file(File(imageFile.path), width: 500, height: 500),
+                    Image.file(File(imageFile!.path), width: 500, height: 500),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1046,7 +983,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                               hintText: latitude ==  "" ? "" : latitude + "," + longitude,
                               helperText: "La ubicación se toma de tu GPS. Recuerda tenerlo activo",
                               helperMaxLines: 2,
-                              helperStyle: TextStyle(color: Colors.black),
+                              helperStyle: const TextStyle(color: Colors.black),
                               enabled: false,
                               contentPadding: const EdgeInsets.only(bottom: 10.0, left: 10.0, right: 10.0),
                               border: OutlineInputBorder(
@@ -1085,12 +1022,10 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                             builder: (context, AsyncSnapshot<List<SituationList>> snapshot) {
                               if(snapshot.hasData){
                                 incidentes = snapshot.data;
-                                List<String> incidentesName;
-                                incidentes!.forEach((element) {
-                                  
-                                });
-                                
-
+                                List<String> incidentesName = ["Escoger"];
+                                for (var element in incidentes!) {
+                                  incidentesName.add(element.name!);
+                                }
                                 return DropdownButton<String>(
                                   isDense: true,
                                   isExpanded: true,
@@ -1114,10 +1049,11 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                                   onChanged: (String? newValue) {
                                     setState(() {
                                       claseIncidente = newValue!;
+                                      idClaseIncidente = incidentes!.where((element) => element.name == newValue).first.id.toString();
+                                      if(idClaseIncidente != prevIdClaseIncidente) prevIdClaseIncidente = idClaseIncidente;
                                     });
                                   },
-                                  items: <String>['Escoger', 'Accidente', 'Condiciones de la superficie de la carretera', 'Malas condiciones ambientales', 'Obstrucción', 'Infraestructura dañada']
-                                      .map<DropdownMenuItem<String>>((String value) {
+                                  items: incidentesName.map<DropdownMenuItem<String>>((String value) {
                                     return DropdownMenuItem<String>(
                                       value: value,
                                       child: SizedBox(
@@ -1147,50 +1083,110 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                           ),
                         ),
 
-                        Container(
-                          height: 40.0,
-                          alignment: Alignment.center,
-                          margin: const EdgeInsets.only(top: 8.0, bottom: 15.0),
-                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0),
-                            border: Border.all(
-                              color: HexColor('#BCBBBB')
-                            )
-                          ),
-                          child: DropdownButton<String>(
-                            isDense: true,
-                            isExpanded: true,
-                            hint: Text(
-                              '$tipoIncidente', 
-                              overflow: TextOverflow.ellipsis,
-                              style: claseIncidente == 'Escoger' ? textStyles.greyText(context: context, lightGrey: true) :textStyles.blackText(),
-                            ),
-                            dropdownColor: Colors.white,
-                            icon: RotatedBox(
-                              quarterTurns: 1,
-                              child: Icon(
-                                Icons.arrow_forward_ios_outlined,
-                                color: Theme.of(context).cardColor,
+
+                        // !===============================================================================
+                        idClaseIncidente != ""  && idClaseIncidente == prevIdClaseIncidente
+                          ? Container(
+                              height: 40.0,
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.only(top: 8.0, bottom: 15.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                border: Border.all(
+                                  color: HexColor('#BCBBBB')
+                                )
+                              ),
+                              child: FutureBuilder(
+                                future: singletonApiSituationsList.getSubSituationsList(idClaseIncidente!),
+                                builder: (context, AsyncSnapshot<List<SubSituationList>> snapshot) {
+                                  if(snapshot.hasData){
+                                    subIncidentes = snapshot.data;
+                                    List<String> subIncidentesName = ["Escoger"];
+                                    for (var element in subIncidentes!) {
+                                      subIncidentesName.add(element.name!);
+                                    }
+                                    return DropdownButton<String>(
+                                      isDense: true,
+                                      isExpanded: true,
+                                      hint: Text(
+                                        '$tipoIncidente', 
+                                        overflow: TextOverflow.ellipsis,
+                                        style: tipoIncidente == 'Escoger' ? textStyles.greyText(context: context, lightGrey: true) :textStyles.blackText(),
+                                      ),
+                                      dropdownColor: Colors.white,
+                                      icon: RotatedBox(
+                                        quarterTurns: 1,
+                                        child: Icon(
+                                          Icons.arrow_forward_ios_outlined,
+                                          color: Theme.of(context).cardColor,
+                                        )
+                                      ),
+                                      iconSize: ScreenSize.screenWidth * 0.0500,
+                                      elevation: 16,
+                                      underline: Container(),
+                                      onChanged: (String? newValue) {
+                                        setState(() {
+                                          tipoIncidente = newValue!;
+                                        });
+                                      },
+                                      items: subIncidentesName.map<DropdownMenuItem<String>>((String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: SizedBox(width: ScreenSize.screenWidth * 0.72 ,child: Text(value, maxLines: 3, overflow: TextOverflow.ellipsis,))
+                                        );
+                                      }).toList(),
+                                    );
+                                  } else{
+                                    return const CircularProgressIndicator.adaptive();
+                                  }
+                                }
                               )
+                            )
+                          : Container(
+                              height: 40.0,
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.only(top: 8.0, bottom: 15.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                border: Border.all(
+                                  color: HexColor('#BCBBBB')
+                                )
+                              ),
+                              child: DropdownButton<String>(
+                                isDense: true,
+                                isExpanded: true,
+                                hint: Text(
+                                  'Selecciona una clase de incidente', 
+                                  overflow: TextOverflow.ellipsis,
+                                  style: textStyles.greyText(context: context, lightGrey: true)
+                                ),
+                                dropdownColor: Colors.white,
+                                icon: RotatedBox(
+                                  quarterTurns: 1,
+                                  child: Icon(
+                                    Icons.arrow_forward_ios_outlined,
+                                    color: Theme.of(context).cardColor,
+                                  )
+                                ),
+                                iconSize: ScreenSize.screenWidth * 0.0500,
+                                elevation: 16,
+                                underline: Container(),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    tipoIncidente = newValue!;
+                                  });
+                                },
+                                items: <String>['Escoger']
+                                    .map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: SizedBox(width: ScreenSize.screenWidth * 0.72 ,child: Text(value, maxLines: 3, overflow: TextOverflow.ellipsis,))
+                                  );
+                                }).toList(),
+                              ),
                             ),
-                            iconSize: ScreenSize.screenWidth * 0.0500,
-                            elevation: 16,
-                            underline: Container(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                tipoIncidente = newValue!;
-                              });
-                            },
-                            items: <String>['Escoger', 'Choque Simple', 'Choque Multiple']
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: SizedBox(width: ScreenSize.screenWidth * 0.72 ,child: Text(value, maxLines: 3, overflow: TextOverflow.ellipsis,))
-                              );
-                            }).toList(),
-                          ),
-                        ),
 
                         Text(
                           'Descripción',
@@ -1263,7 +1259,6 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
                                 )
                               ),
                               onPressed: () async{
-                                //TODO: 
                                   // create this variable
                                   try{
                                     var position = await _determinePosition();
@@ -1380,12 +1375,12 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
 
   Future _login() async {
     try {
-      print("hola");
+      debugPrint("hola");
       // var hola = await oauth.login();
       // var accessToken = await oauth.getAccessToken();
-      // print('Logged in successfully, your access token: $accessToken');
+      // debugPrint('Logged in successfully, your access token: $accessToken');
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 
@@ -1428,21 +1423,6 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin{
       ),
       child: child
     );
-  }
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? pickedDate = await showDatePicker(
-      context: context,
-      locale: const Locale('es', 'CO'),
-      initialDate: DateTime.now(), 
-      firstDate: DateTime(1900), 
-      lastDate: DateTime(2100)
-    );
-    if (pickedDate != null && pickedDate != currentDate) {
-      setState(() {
-        currentDate = pickedDate;
-      });
-    }
   }
 
 }

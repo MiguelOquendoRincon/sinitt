@@ -13,6 +13,12 @@ class ApiSituationsList {
     return resp;
   }
 
+  Future<List<SubSituationList>> getSubSituationsList(String situationId){
+    String url = HttpHandler.getSituationList + 'situation-subtype/situation-type/$situationId';
+    final resp = _http.getGet(url).then((response) => subsituationListFromJson(response));
+    return resp;
+  }
+
 }
 
 final singletonApiSituationsList = ApiSituationsList();

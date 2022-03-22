@@ -1,7 +1,7 @@
 sinitt
 2.12
-file:///C:/Users/migue/Desktop/sinitt-sipi-app-movil/sinitt/
-file:///C:/Users/migue/Desktop/sinitt-sipi-app-movil/sinitt/lib/
+file:///C:/Users/Usuario/Desktop/sinitt/sinitt/
+file:///C:/Users/Usuario/Desktop/sinitt/sinitt/lib/
 _fe_analyzer_shared
 2.12
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-31.0.0/
@@ -126,6 +126,14 @@ fixnum
 2.12
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/fixnum-1.0.0/
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/fixnum-1.0.0/lib/
+flutter_appauth
+2.12
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_appauth-2.4.1/
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_appauth-2.4.1/lib/
+flutter_appauth_platform_interface
+2.12
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_appauth_platform_interface-4.1.0/
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_appauth_platform_interface-4.1.0/lib/
 flutter_lints
 2.12
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4/

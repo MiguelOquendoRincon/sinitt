@@ -70,7 +70,7 @@ dependencies:
   http_mock_adapter: ^0.3.2
   dio: ^4.0.4
   # flutter_azure_b2c: 
-  # flutter_appauth: ^2.4.0
+  flutter_appauth: ^2.4.1
 
 dev_dependencies:
   flutter_test:
