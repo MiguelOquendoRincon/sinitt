@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:sinitt/models/user_token_model.dart';
 import 'package:test/test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 
@@ -20,7 +21,7 @@ void main() async {
       dio.httpClientAdapter = dioAdapterMockito;
     });
 
-    const path = 'https://example.com';
+    const path = 'https://auth-service-dot-smart-helios-sinitt.uc.r.appspot.com/auth/default';
 
     test('Expects Dioadapter to mock the data', () async {
       final dio = Dio();
@@ -36,13 +37,17 @@ void main() async {
 
       // Making dio.get request on the path an expecting mocked response
       final getResponse = await dio.get(path);
-      expect(jsonEncode({'message': 'Successfully mocked GET!'}),
-          getResponse.data);
+      expect(jsonEncode({
+        "token": "sdfasfsafsafsfsfsfsaf",
+        "username": "User Test",
+        "names": "User",
+        "termsAccepted": true,
+        "tokenType": "Bearer",
+        "defaultUser": true
+      }),getResponse.data);
 
       // Making dio.post request on the path an expecting mocked response
-      final postResponse = await dio.post(path);
-      expect(jsonEncode({'message': 'Successfully mocked POST!'}),
-          postResponse.data);
+      expect(UserToken.fromJson(json.decode(getResponse.data)), UserToken());
     });
 
     // test('mocks any request/response via fetch method', () async {

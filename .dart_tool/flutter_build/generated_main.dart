@@ -5,10 +5,10 @@
 
 // @dart = 2.12
 
-// When `package:sinitt/main.dart` defines `main`, that definition is shadowed by the definition below.
-export 'package:sinitt/main.dart';
+// When `file:///C:/Users/Usuario/AppData/Local/Temp/flutter_tools.5d8b6ca/flutter_test_listener.fafd4676/listener.dart` defines `main`, that definition is shadowed by the definition below.
+export 'file:///C:/Users/Usuario/AppData/Local/Temp/flutter_tools.5d8b6ca/flutter_test_listener.fafd4676/listener.dart';
 
-import 'package:sinitt/main.dart' as entrypoint;
+import 'file:///C:/Users/Usuario/AppData/Local/Temp/flutter_tools.5d8b6ca/flutter_test_listener.fafd4676/listener.dart' as entrypoint;
 import 'dart:io'; // flutter_ignore: dart_io_import.
 import 'package:path_provider_android/path_provider_android.dart';
 import 'package:shared_preferences_android/shared_preferences_android.dart';

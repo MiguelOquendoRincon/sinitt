@@ -8,10 +8,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:location/location.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
-import 'package:sinitt/api/api_foto_deteccion.dart';
-import 'package:sinitt/api/api_peajes.dart';
-import 'package:sinitt/api/api_signals.dart';
-import 'package:sinitt/api/api_situtations.dart';
 import 'package:sinitt/models/foto_deteccion_model.dart' as foto_deteccion;
 import 'package:sinitt/models/peaje_model.dart' as peaje;
 import 'package:sinitt/models/signals_model.dart' as signals;
@@ -21,6 +17,7 @@ import 'package:sinitt/utils/hexcolor.dart';
 import 'package:sinitt/utils/icons.dart';
 import 'package:sinitt/utils/screen_size.dart';
 import 'package:sinitt/utils/text_style.dart';
+import 'package:sinitt/utils/utils.dart';
 import 'package:sinitt/widgets/drawer.dart';
 
 
@@ -66,60 +63,78 @@ class _HomePageState extends State<HomePage> {
 
   // *Lee el JSON requerido y lo guarda en la variable para usarlos luego en la función que carga los iconos.
   Future<void> readJson(String jsonName) async {
-    // final String response = await rootBundle.loadString('assets/geojson/$jsonName.json');
-    // singletonApiFotoDetection.getFotoDetection().then((value) {
-    //   var data = situation.situationFromJson(response);
-    //   var jsonData = data.toJson();
-    //   setState(() => situationJson = jsonData);
-    // });
-    if(jsonName == 'situation'){
-      // * ?departmentCode=05&municipalityCode=05001&roadCode=6204
-      await singletonApiSituations.getSituations(
-        depCode: userPrefs.depID != "" ? "?departmentCode=" + userPrefs.depID : "",
-        muniCode: userPrefs.muniID != "" ? "&municipalityCode=" + userPrefs.muniID : "", 
-        viaCode: userPrefs.viaID != "" ? "&roadCode=" + userPrefs.viaID : "",
-      ).then((value) {
-        var data = situation.situationFromJson(value);
-        var jsonData = data.toJson();
-        setState(() => situationJson = jsonData);
-        
-      });
-    } else if(jsonName == 'peajes'){
-      await singletonApiPeajes.getPeajes(
-        depCode: userPrefs.depID != "" ? "?departmentCode=" + userPrefs.depID : "",
-        muniCode: userPrefs.muniID != "" ? "&municipalityCode=" + userPrefs.muniID : "", 
-        viaCode: userPrefs.viaID != "" ? "&roadCode=" + userPrefs.viaID : "",
-      ).then((value) {
-        var data = peaje.peajesFromJson(value);
-        var jsonData = data.toJson();
-        setState(() => peajeJson = jsonData);
-      });
-    } else if(jsonName == 'fotodeteccion'){
-      await singletonApiFotoDetection.getFotoDetection(
-        depCode: userPrefs.depID != "" ? "?departmentCode=" + userPrefs.depID : "",
-        muniCode: userPrefs.muniID != "" ? "&municipalityCode=" + userPrefs.muniID : "", 
-        viaCode: userPrefs.viaID != "" ? "&roadCode=" + userPrefs.viaID : "",
-      ).then((value) {
-        var data = foto_deteccion.fotoDeteccionFromJson(value);
-        var jsonData = data.toJson();
-        setState(() => fotoDeteccionJson = jsonData);
-        // userPrefs.userCapFilter = "";
-        // userPrefs.depID = "";
-        // userPrefs.muniID = "";
-        // userPrefs.viaID = "";
-      });
-    } else if(jsonName == 'signals'){
-      await singletonApiSignals.getSignals(
-        depCode: userPrefs.depID != "" ? "?departmentCode=" + userPrefs.depID : "",
-        muniCode: userPrefs.muniID != "" ? "&municipalityCode=" + userPrefs.muniID : "", 
-        viaCode: userPrefs.viaID != "" ? "&roadCode=" + userPrefs.viaID : "",
-      ).then((value) {
-        var data = signals.signalsFromJson(value);
-        var jsonData = data.toJson();
-        setState(() => signalsJson = jsonData);
-      });
+    var hola = Utils();
+    var holita = await hola.readJson(jsonName);
+    switch (holita[0]) {
+      case "situation":
+        setState(() => situationJson = holita[1]);
+        break;
+      case "peajes":
+        setState(() => peajeJson = holita[1]);
+        break;
+      case "fotodeteccion":
+        setState(() => fotoDeteccionJson = holita[1]);
+        break;
+      case "signals":
+        setState(() => signalsJson = holita[1]);
+        break;
     }
   }
+
+  // Future<String> readJson(String jsonName) async {
+  //   // final String response = await rootBundle.loadString('assets/geojson/$jsonName.json');
+  //   // singletonApiFotoDetection.getFotoDetection().then((value) {
+  //   //   var data = situation.situationFromJson(response);
+  //   //   var jsonData = data.toJson();
+  //   //   setState(() => situationJson = jsonData);
+  //   // });
+  //   if(jsonName == 'situation'){
+  //     // * ?departmentCode=05&municipalityCode=05001&roadCode=6204
+  //     await singletonApiSituations.getSituations(
+  //       depCode: userPrefs.depID != "" ? "?departmentCode=" + userPrefs.depID : "",
+  //       muniCode: userPrefs.muniID != "" ? "&municipalityCode=" + userPrefs.muniID : "", 
+  //       viaCode: userPrefs.viaID != "" ? "&roadCode=" + userPrefs.viaID : "",
+  //     ).then((value) {
+  //       var data = situation.situationFromJson(value);
+  //       Map<String, dynamic> jsonData = data.toJson();
+  //       setState(() => situationJson = jsonData);
+        
+  //     });
+  //   } else if(jsonName == 'peajes'){
+  //     await singletonApiPeajes.getPeajes(
+  //       depCode: userPrefs.depID != "" ? "?departmentCode=" + userPrefs.depID : "",
+  //       muniCode: userPrefs.muniID != "" ? "&municipalityCode=" + userPrefs.muniID : "", 
+  //       viaCode: userPrefs.viaID != "" ? "&roadCode=" + userPrefs.viaID : "",
+  //     ).then((value) {
+  //       Map<String, dynamic> jsonData = value.toJson();
+  //       setState(() => peajeJson = jsonData);
+  //     });
+  //   } else if(jsonName == 'fotodeteccion'){
+  //     await singletonApiFotoDetection.getFotoDetection(
+  //       depCode: userPrefs.depID != "" ? "?departmentCode=" + userPrefs.depID : "",
+  //       muniCode: userPrefs.muniID != "" ? "&municipalityCode=" + userPrefs.muniID : "", 
+  //       viaCode: userPrefs.viaID != "" ? "&roadCode=" + userPrefs.viaID : "",
+  //     ).then((value) {
+  //       var data = foto_deteccion.fotoDeteccionFromJson(value);
+  //       Map<String, dynamic> jsonData = data.toJson();
+  //       setState(() => fotoDeteccionJson = jsonData);
+  //       // userPrefs.userCapFilter = "";
+  //       // userPrefs.depID = "";
+  //       // userPrefs.muniID = "";
+  //       // userPrefs.viaID = "";
+  //     });
+  //   } else if(jsonName == 'signals'){
+  //     await singletonApiSignals.getSignals(
+  //       depCode: userPrefs.depID != "" ? "?departmentCode=" + userPrefs.depID : "",
+  //       muniCode: userPrefs.muniID != "" ? "&municipalityCode=" + userPrefs.muniID : "", 
+  //       viaCode: userPrefs.viaID != "" ? "&roadCode=" + userPrefs.viaID : "",
+  //     ).then((value) {
+  //       var data = signals.signalsFromJson(value);
+  //       var jsonData = data.toJson();
+  //       setState(() => signalsJson = jsonData);
+  //     });
+  //   }
+  // }
 
 
   // *Funcion que se llama cuando el mapa se creo para pasarle los parametros requeridos al controlador.
